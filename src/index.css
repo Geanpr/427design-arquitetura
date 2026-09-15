@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    color-scheme: light;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background: #f9f9f6;
+    color: #1a1a1a;
+    font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: #0a0a0a;
+    color: #f9f9f6;
+  }
+
+  :focus-visible {
+    outline: 1px solid #8b7355;
+    outline-offset: 3px;
+  }
+
+  select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none' stroke='%2377736B' stroke-width='1.2'><path d='M1 1.5 6 6.5l5-5'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 0.25rem center;
+  }
+}
+
+@layer components {
+  /* Revelação no scroll */
+  .reveal {
+    opacity: 0;
+    transform: translateY(26px);
+    transition: opacity 1s var(--ease), transform 1s var(--ease);
+    will-change: opacity, transform;
+  }
+  .reveal.is-in {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* O objeto livro */
+  .capa {
+    perspective: 1400px;
+  }
+  /* A capa tipográfica escala com a própria largura, não com a da janela —
+     assim funciona igual no grid, na página de produto e na miniatura do carrinho. */
+  .capa-fig {
+    container-type: inline-size;
+  }
+  .capa-marca {
+    font-size: clamp(5px, 3.4cqw, 11px);
+  }
+  .capa-titulo {
+    font-size: clamp(10px, 11.5cqw, 34px);
+    line-height: 1.08;
+  }
+  .capa-linha {
+    font-size: clamp(5px, 3.6cqw, 11px);
+  }
+  .capa-inner {
+    transform-style: preserve-3d;
+    box-shadow: 0 14px 34px -22px rgba(10, 10, 10, 0.45), 0 2px 6px -3px rgba(10, 10, 10, 0.18);
+    transition: transform 0.9s var(--ease), box-shadow 0.9s var(--ease);
+  }
+  .capa:hover .capa-inner {
+    transform: rotateY(-7deg) rotateX(2.5deg) translateY(-8px);
+    box-shadow: 0 34px 60px -28px rgba(10, 10, 10, 0.5), 0 4px 12px -6px rgba(10, 10, 10, 0.2);
+  }
+  .hero-capa .capa-inner {
+    transform: rotateY(-9deg) rotateX(3deg);
+    box-shadow: 0 46px 80px -34px rgba(0, 0, 0, 0.85);
+  }
+  .hero-capa:hover .capa-inner {
+    transform: rotateY(-4deg) rotateX(1.5deg) translateY(-8px);
+  }
+  .produto-capa .capa-inner {
+    box-shadow: 0 30px 60px -30px rgba(10, 10, 10, 0.42), 0 3px 10px -5px rgba(10, 10, 10, 0.16);
+  }
+}
+
+@layer utilities {
+  @media (min-width: 1024px) {
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1eee7;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cfc9bc;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #b3ac9d;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+    .reveal {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+}

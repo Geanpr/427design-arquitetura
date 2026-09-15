@@ -1,0 +1,10 @@
+Coloque aqui as capas reais dos projetos, em JPG ou WebP.
+
+Nome do arquivo = slug do projeto em src/App.jsx (array PROJETOS).
+Exemplos: deborah-roig.jpg, stock-home-office-14.jpg, florense.jpg
+
+Depois aponte no objeto ASSETS, no topo de src/App.jsx:
+
+  ASSETS.projetos['deborah-roig'] = '/img/capas/deborah-roig.jpg';
+
+Proporção recomendada: 3:4 (ex. 900 x 1200 px).
