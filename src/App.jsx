@@ -373,7 +373,7 @@ function Label({ children, className = '', dark = false }) {
 }
 
 function Rule({ className = '', dark = false }) {
-  return <div className={`h-px w-full ${dark ? 'bg-white/12' : 'bg-rule'} ${className}`} />;
+  return <div className={`h-px w-full ${dark ? 'bg-white/[0.12]' : 'bg-rule'} ${className}`} />;
 }
 
 /* Botão editorial: texto em caixa alta com sublinhado que cresce no hover. */
@@ -669,7 +669,7 @@ function Nav({ path, go, transparente }) {
     <>
       <header
         className={`fixed inset-x-0 top-0 z-[60] transition-[background-color,border-color,padding] duration-600 ease-editorial ${
-          claro ? 'border-b border-transparent bg-transparent py-6 md:py-8' : 'border-b border-rule bg-paper/92 py-4 backdrop-blur-md md:py-5'
+          claro ? 'border-b border-transparent bg-transparent py-6 md:py-8' : 'border-b border-rule bg-paper/[0.92] py-4 backdrop-blur-md md:py-5'
         }`}
       >
         <div className="mx-auto flex max-w-[92rem] items-center justify-between gap-6 px-6 md:px-10 lg:px-14">
